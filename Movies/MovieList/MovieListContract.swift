@@ -26,6 +26,7 @@ protocol MovieListPresentationLogic {
     func onSelect(criteria: MovieFetchCriteria)
     func loadMoreDataOnReachingListEnd()
     func onSearchTermChangeTo(searchTerm: String?)
+    func onSelectMovieWith(id: Int)
 }
 
 // Datastore to hold fetched data for different criterias (popular, top rated, upcoming)
@@ -44,6 +45,7 @@ protocol MovieListBusinessLogic {
     func getMoviesFor(criteria: MovieFetchCriteria)
     func loadMoreMovies()
     func searchMoviesMatching(searchTerm: String?)
+    func movieFor(movieId: Int) -> Movie?
 }
 
 // Interactor's delegate to output fetch results. To be confirmed by presenter ideally
@@ -55,6 +57,7 @@ protocol MovieListBusinessLogicOutput: class {
 // To be confirmed by Router
 protocol MovieListWireframe {
     var viewController: UIViewController? { get set }
+    func routeToMovieDetails(movie: Movie)
 }
 
 // Use case to fetch movies based on criteria

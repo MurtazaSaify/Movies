@@ -12,14 +12,14 @@ import Foundation
 protocol MovieAPIManager: APIManager {
 
     func fetchMovies(criteria: MovieFetchCriteria, page: Int, completion: @escaping (_ movieCollection: MovieCollection?, _ error: Error?) -> ())
-    func fetchMovieDetailsFor(movieId: String, completion:  @escaping (_ movie: Movie?, _ error: Error?) -> ())
+    func fetchMovieDetailsFor(movieId: Int, completion:  @escaping (_ movie: Movie?, _ error: Error?) -> ())
 }
 
 class DefaultMovieAPIManager: MovieAPIManager {
 
     private enum Endpoint {
         case fetchMovies(criteria: MovieFetchCriteria, page: Int)
-        case movieDetails(movieId: String)
+        case movieDetails(movieId: Int)
 
         func absoluteURL() -> URL? {
             var urlString: String
@@ -53,7 +53,7 @@ class DefaultMovieAPIManager: MovieAPIManager {
         }
     }
 
-    func fetchMovieDetailsFor(movieId: String, completion:  @escaping (_ movie: Movie?, _ error: Error?) -> ()) {
+    func fetchMovieDetailsFor(movieId: Int, completion:  @escaping (_ movie: Movie?, _ error: Error?) -> ()) {
         guard let url = Endpoint.movieDetails(movieId: movieId).absoluteURL() else {
             return
         }

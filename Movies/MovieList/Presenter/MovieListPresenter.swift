@@ -33,6 +33,13 @@ class MovieListPresenter: MovieListPresentationLogic {
 
         interactor?.searchMoviesMatching(searchTerm: searchTerm)
     }
+
+    func onSelectMovieWith(id: Int) {
+        guard let movie = interactor?.movieFor(movieId: id) else {
+            return
+        }
+        router?.routeToMovieDetails(movie: movie)
+    }
 }
 
 extension MovieListPresenter: MovieListBusinessLogicOutput {

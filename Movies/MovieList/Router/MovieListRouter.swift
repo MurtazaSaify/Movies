@@ -42,4 +42,11 @@ class MovieListRouter: MovieListWireframe {
     static var mainstoryboard: UIStoryboard {
         return UIStoryboard(name:"Main", bundle: Bundle.main)
     }
+
+    func routeToMovieDetails(movie: Movie) {
+        guard let movieDetailsVC = MovieDetailsRouter.configureModule(with: movie) else {
+            return
+        }
+        viewController?.navigationController?.pushViewController(movieDetailsVC, animated: true)
+    }
 }

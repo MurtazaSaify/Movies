@@ -68,6 +68,15 @@ class MovieListInteractor: MovieListBusinessLogic {
         }
         currentSearchTerm = searchTerm
     }
+
+    func movieFor(movieId: Int) -> Movie? {
+        let allCollections = datastore?.movieCollectionStore?.compactMap { $0.value }
+        var allMovies: [Movie] = []
+        allCollections?.forEach({ (movieCollection) in
+            allMovies.append(contentsOf: movieCollection.movies ?? [])
+        })
+        return allMovies.first(where: { $0.id == movieId })
+    }
 }
 
 extension MovieListInteractor {
