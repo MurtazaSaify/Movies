@@ -16,14 +16,35 @@ struct Movie: Codable {
     var releaseDate: Date?
     var imagePath: String?
     var popularity: Double?
+    var productionCompanies: [MovieProductionCompany]?
+    var genres: [MovieGenre]?
 
     enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
+        case id
+        case title
         case rating = "vote_average"
-        case overview = "overview"
+        case overview
         case releaseDate = "release_date"
         case imagePath = "poster_path"
-        case popularity = "popularity"
+        case popularity
+        case productionCompanies = "production_companies"
+        case genres
     }
+}
+
+struct MovieProductionCompany: Codable {
+    var id: Int?
+    var imagePath: String?
+    var name: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case imagePath = "logo_path"
+    }
+}
+
+struct MovieGenre: Codable {
+    var id: Int?
+    var name: String?
 }

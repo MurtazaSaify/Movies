@@ -65,7 +65,7 @@ class MovieListCollectionViewCell: UICollectionViewCell {
         }
         titleLabel.text = model.title
         descriptionLabel.text = model.movieDescription
-        ratingLabel.text = model.ratingText
-        ratingView.backgroundColor = model.ratingBackgroundTint
+        ratingLabel.text = model.ratingViewModel?.ratingText
+        ratingView.backgroundColor = model.ratingViewModel?.ratingTint
     }
 }

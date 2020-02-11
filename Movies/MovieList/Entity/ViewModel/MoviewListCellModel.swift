@@ -11,25 +11,35 @@ import UIKit
 
 // MoviewListCell view model
 struct MovieListCellModel {
+    var movieId: Int?
     var title: String?
     var imageFilePath: String?
-    var ratingText: String?
-    var ratingBackgroundTint: UIColor?
+    var ratingViewModel: MovieRatingViewModel?
     var movieDescription: String?
 
     init(movie: Movie) {
+        self.movieId = movie.id
         self.title = movie.title
         self.imageFilePath = movie.imagePath
-        self.ratingText = "\(movie.rating ?? 0)"
         if let rating = movie.rating {
-            if rating < 4.0 {
-                ratingBackgroundTint = .red
-            } else if rating < 8.0 {
-                ratingBackgroundTint = .darkYellow
-            } else {
-                ratingBackgroundTint = .darkGreen
-            }
+            self.ratingViewModel = MovieRatingViewModel(rating: rating)
         }
         self.movieDescription = movie.overview
+    }
+}
+
+struct MovieRatingViewModel {
+    var ratingText: String?
+    var ratingTint: UIColor?
+
+    init(rating: Double) {
+        ratingText = "\(rating)"
+        if rating < 4.0 {
+            ratingTint = .red
+        } else if rating < 8.0 {
+            ratingTint = .darkYellow
+        } else {
+            ratingTint = .darkGreen
+        }
     }
 }

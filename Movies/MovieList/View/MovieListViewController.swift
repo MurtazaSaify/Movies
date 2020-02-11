@@ -79,6 +79,13 @@ extension MovieListViewController: UICollectionViewDelegate {
         }
         presenter?.loadMoreDataOnReachingListEnd()
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let movieId = cellModels?[indexPath.item].movieId else {
+            return
+        }
+        presenter?.onSelectMovieWith(id: movieId)
+    }
 }
 
 extension MovieListViewController: MovieListDisplayLogic {
