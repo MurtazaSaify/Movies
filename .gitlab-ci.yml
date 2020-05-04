@@ -3,12 +3,11 @@ stages:
 - deploy
 
 test:
-stage: test
-script:
-  - echo "test called"
+    stage: test
+    script:
+    - echo "test called"
 
 deploy:
-stage: deploy
-script:
-  - echo "deploy called"
-
+    stage: deploy
+    script:
+    - echo "deploy called"
