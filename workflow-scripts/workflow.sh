@@ -1,0 +1,1 @@
+echo "Workflow test"
