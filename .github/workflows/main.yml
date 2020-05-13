@@ -1,0 +1,18 @@
+on: [pull_request_review]
+
+jobs:
+  auto_merge_pr:
+    runs-on: ubuntu-latest
+    name: Check and auto merge PR
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check and auto merge PR step
+        uses: ./ # Uses an action in the root directory
+        id: auto-merge-PR
+        with:
+          check-to-auto-merge-PR:
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "Eligible to auto merge PR ? -> ${{ steps.auto-merge-PR.outputs.isMergable }}"
