@@ -1,4 +1,4 @@
-on: [push]
+on: [pull_request_review]
 
 jobs:
   auto_merge_pr:
