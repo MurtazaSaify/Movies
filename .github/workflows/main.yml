@@ -1,18 +1,18 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  auto_merge_pr:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Check and auto merge PR
     steps:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Check and auto merge PR step
         uses: ./ # Uses an action in the root directory
-        id: hello
+        id: auto-merge-PR
         with:
-          who-to-greet: 'Mona the Octocat'
+          check-to-auto-merge-PR
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "Eligible to auto merge PR ? -> ${{ steps.auto-merge-PR.outputs.isMergable }}"

@@ -1,13 +1,13 @@
 name: 'Sample Git Workflow'
 description: 'Check sample git workflow'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  check-to-auto-merge-PR:  # id of input
+    description: 'Run checks to determine whether PR can be auto merged'
     required: true
     default: 'World'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  isMergable: # id of output
+    description: 'Is eligible to be auto-merged'
 runs:
   using: 'node12'
   main: 'dist/index.js'
