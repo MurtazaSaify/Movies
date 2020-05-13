@@ -50,7 +50,7 @@ const core = __webpack_require__(968);
 const github = __webpack_require__(706);
 
 try {
-  
+  const message = core.getInput('check-to-auto-merge-PR');
   console.log(`Running checks to determine if the PR can be auto merged`);
   core.setOutput("isMergable", `true`);
   // Get the JSON webhook payload for the event that triggered the workflow
