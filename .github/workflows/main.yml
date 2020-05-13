@@ -12,7 +12,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: auto-merge-PR
         with:
-          check-to-auto-merge-PR
+          check-to-auto-merge-PR:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "Eligible to auto merge PR ? -> ${{ steps.auto-merge-PR.outputs.isMergable }}"
